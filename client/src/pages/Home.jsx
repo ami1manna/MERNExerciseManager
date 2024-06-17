@@ -2,13 +2,14 @@ import { useEffect,useState } from 'react'
 
 // import component
 import WorkoutDetails from '../components/WorkoutDetails'
+import WorkoutForms from '../components/WorkoutForms'
 
 const Home = () => {
     const [workouts,setWorkouts] = useState(null)
     useEffect(()=>{
         // fires when pages is loaded only once
         const fetchWorkouts = async()=>{
-            const response = await fetch('https://workoutmanager-7ftm.onrender.com/api/workouts/');
+            const response = await fetch('http://localhost:4000/api/workouts/');
             const json = await response.json();
             if(response.ok)
                 {
@@ -29,6 +30,7 @@ const Home = () => {
                 <WorkoutDetails key={workout._id} workout={workout}></WorkoutDetails>
             ))}          
         </div>
+        <WorkoutForms></WorkoutForms>
     </div>
   )
 }
