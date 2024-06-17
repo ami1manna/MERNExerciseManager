@@ -5,8 +5,16 @@ const mongoose = require('mongoose');
 //import routes 
 const workoutRoutes = require('./routes/workouts')
 
+//import cors
+const cors = require('cors');
+
 //express app 
 const app = express();
+
+// Use CORS middleware
+app.use(cors({
+    origin: 'http://localhost:5173' // Allow only this origin
+}));
 
 //middle ware
 app.use(express.json());// added for putting data to be send to server
